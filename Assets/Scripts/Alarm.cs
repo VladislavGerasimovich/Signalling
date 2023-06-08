@@ -8,35 +8,27 @@ public class Alarm : MonoBehaviour
 
     private float _duration = 3f;
     private float _runningTime = 0f;
-    private float _minValueOfVolume = 0;
-    private float _maxValueOfVolume = 1;
+    private float _startPosition = 0;
+    private float _endPosition = 1;
 
     public void Play()
     {
-        StartCoroutine(IncreaseVolume());
+        StartCoroutine(ChangeVolume(_startPosition, _endPosition));
     }
 
     public void Stop()
     {
-        StartCoroutine(DecreaseVolume());
+        StartCoroutine(ChangeVolume(_endPosition, _startPosition));
     }
 
-    public IEnumerator IncreaseVolume()
+    public IEnumerator ChangeVolume(float startPosition, float endPosition)
     {
-        while (_runningTime <= _duration)
+        _runningTime = 0f;
+
+        while (_runningTime < _duration)
         {
             _runningTime += Time.deltaTime;
-            _audio.volume = Mathf.MoveTowards(_minValueOfVolume, _maxValueOfVolume, _runningTime / _duration);
-            yield return null;
-        }
-    }
-
-    public IEnumerator DecreaseVolume()
-    {
-        while (_runningTime > 0)
-        {
-            _runningTime -= Time.deltaTime;
-            _audio.volume = Mathf.MoveTowards(_minValueOfVolume, _maxValueOfVolume, _runningTime / _duration);
+            _audio.volume = Mathf.MoveTowards(startPosition, endPosition, _runningTime / _duration);
             yield return null;
         }
     }
