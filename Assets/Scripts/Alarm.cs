@@ -10,10 +10,11 @@ public class Alarm : MonoBehaviour
     private float _runningTime = 0f;
     private float _startPosition = 0;
     private float _endPosition = 1;
+    private Coroutine _changeVolumeJob;
 
     public void Play()
     {
-        StartCoroutine(ChangeVolume(_startPosition, _endPosition));
+        _changeVolumeJob = StartCoroutine(ChangeVolume(_startPosition, _endPosition));
     }
 
     public void Stop()
@@ -31,5 +32,7 @@ public class Alarm : MonoBehaviour
             _audio.volume = Mathf.MoveTowards(startPosition, endPosition, _runningTime / _duration);
             yield return null;
         }
+
+        StopCoroutine(_changeVolumeJob);
     }
 }
