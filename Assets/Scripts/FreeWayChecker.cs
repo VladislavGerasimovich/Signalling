@@ -1,19 +1,21 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FreeWayChecker : MonoBehaviour
 {
-    [SerializeField] private Alarm _alarm;
+    [SerializeField] private UnityEvent _entered;
+    [SerializeField] private UnityEvent _exited;
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.TryGetComponent<Player>(out Player player))
+        if(collision.TryGetComponent<Player>(out Player player))
         {
-            _alarm.Play();
+            _entered?.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        _alarm.Stop();
+        _exited?.Invoke();
     }
 }

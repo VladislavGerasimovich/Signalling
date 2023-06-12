@@ -725,6 +725,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alarm: {fileID: 765432805}
+  _entered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 765432805}
+        m_TargetAssemblyTypeName: Alarm, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _exited:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 765432805}
+        m_TargetAssemblyTypeName: Alarm, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &765432805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,7 +768,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audio: {fileID: 765432801}
-  _runningTime: 0
 --- !u!1 &1004210895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 974238578668270704, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
