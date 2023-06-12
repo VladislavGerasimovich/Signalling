@@ -16,6 +16,9 @@ public class FreeWayChecker : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        _exited?.Invoke();
+        if (collision.TryGetComponent<Player>(out Player player))
+        {
+            _exited?.Invoke();
+        }
     }
 }
